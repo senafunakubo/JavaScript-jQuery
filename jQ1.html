@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>JQ1</title>
+  <style>
+    .myStyle{
+      border:5px solid green;
+      font-size: 48px;
+    }
+  </style>
+</head>
+<body>
+  <p>jQueryの練習</p>
+  <p><a href="ahttp://google.com" data-sitename="google">Google</a></p>
+  <input type="text" value="hello">
+  <p><a href="http://yahoo.co.jp">Yahoo!</a></p>
+  <p><a href="http://dotinstall.com">Dotinstall</a></p>
+  <ul id="main">
+    <li>0</li>
+    <li class="item">1</li>
+    <li class="item">2</li>
+    <li>
+      3
+         <ul id="sub">
+           <li>3-0</li>
+           <li>3-1</li>
+           <li class="item">3-2</li>
+           <li class="item">3-3</li>
+           <li>3-4</li>
+         </ul>
+    </li>
+  </ul>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+    // $(document).ready(function(){ It is the SAME
+    $(function(){
+       //セレクタ　       メソッド
+       //$('')
+       //html要素 p h1 ul
+       //id #main
+       //class .item
+       // > 直下の子要素
+       //   それ以下の要素
+       //,  複数の要素
+       //+　隣接する要素
+
+      // $('p').css('color','red').hide('slow');
+      // $('#sub').css('color','red');
+      // $('#main > .item').css('color','blue');
+      // $('#main .item').css('color','green');
+      // $('p, .item').css('color','deeppink');
+      // $(".item + .item").css('color','pink
+
+      //フィルタ
+      // :eq()
+      // :gt(), :lt()
+      // :even, :odd
+      // :contains()
+      // :first, :last
+      // $('#sub > li:eq(2)').css('color','pink');
+      // $('#sub > li:gt(1)').css('color','pink');
+      // $('#sub > li:odd').css('color', 'red');
+      // $('#sub > li:contains('4')').css('color', 'red');
+
+      //メソッドを使ったDOM要素の指定
+      //parent(),children()
+      //next(), prev()
+      //siblings() - 兄弟要素
+      //$("#sub").parent().css('color','red'); 3の全て
+      //$("#sub").children().css('color','red'); 3以下全て
+      // $("#sub > li:eq(2)").prev().css('color','red');
+      // $("#sub > li:eq(2)").siblings().css('color','red');
+
+      //属性セレクタ
+      // = equal
+      //!= not equal
+      //*= 含まれている
+      //$= で終わる
+      //^= で始まる
+      // $('a[href="http://google.com"]').css('background','yellow');
+      // $('a[href!="http://google.com"]').css('background','yellow');
+      //$('a[href*="http://dotinstall.com"]').css('background','yellow');
+      // $('a[href$="jp"]').css('background','red');
+      // $('a[href^="a"]').css('background','red');
+
+      //セレクタ.メソッド
+      //.css設定　取得
+      // $('p + p').css('color','red').css('background','yellow');
+      // console.log($('p').css('color'));
+
+      //CSSのクラスを追加、削除するaddClass removeClass
+      // $('p').addClass('myStyle');
+      // $('p').removeClass('myStyle');
+
+      //HTMLの属性の取得や変更 attr
+      // console.log($('a').attr('href')); 取得
+      // $('a').attr('href','https://senafunakubo.github.io'); 変更
+
+      // data
+      // console.log($('a').data('sitename'));
+
+      //タグの中身を変える
+      //text
+      //html
+      //val
+      //remove, empty
+      // $('p').text('just changed');
+      // $('p').html('<a href="">click !</a>'); html使うとき
+      //  console.log($('input').val());
+      //  $('input').val('Hello,again!');
+      //  $('p').remove();
+    });
+  </script>
+</body>
+</html>
