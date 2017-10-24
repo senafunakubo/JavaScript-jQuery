@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <!-- <script src="myScript.js"></script> -->
+    <title>jS1</title>
+    <style>
+      .myStyle{
+        font-weight: bold;
+        border: 1px solid gray;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>見出し</h1>
+    <p id="msg">こんにちは。</p>
+    <button id="add">Add</button>
+    <script>
+      // console.log("Hello World!");
+      var msg1;
+      msg1 = "Hello World!\'";
+      console.log(msg1);
+
+      //undefined 定義されていない
+
+      //=== 同じかどうか
+      //!==
+
+      var score1=80;
+      if (score1>=80) {
+        console.log("Good");
+      }else{
+        console.log("Soso");
+      }
+
+      var max, x=10, y=20;
+      max = (x>y)? x:y;
+      console.log(max);
+
+//switch
+      var signal = "pink";
+      switch (signal) {
+        case "red":
+          console.log("Stop!");
+          break;
+        case "yellow":
+          console.log("Careful!");
+          break;
+        case "green":
+        case "blue":
+          console.log("Go!");
+          break;
+        default:
+          console.log("Wrong");
+          break;
+      }
+
+//    while, do...while
+      var i =200;
+      while (i<10) {
+        console.log(i);
+        i++;
+      }
+
+      do{
+        console.log(i);
+        i++;
+      }while (i<10);
+
+//for
+// break...  ループ処理を抜ける
+// continue... ループ処理を1回スキップ
+      for (var i = 0; i < 10; i++) {
+        if(i===5){
+          continue;
+        }
+        console.log(i);
+      }
+
+    // alert("Hello!");
+
+    // if (confirm("本当に？")) {
+    //
+    // }
+
+    // var name = prompt("お名前は？","名無し");
+    // console.log(name);
+
+    function hello(name){
+      var ms = "Hello!!" + name; //ローカル変数
+      return console.log(ms);
+    }
+    hello("Tom");
+
+    (function(name){
+      var ms = "Hello" + name; //ローカル変数
+      return console.log(ms);
+    })("Aseem"); //即時関数
+
+    // var goodbye = function(name){
+    //   var msg = "goodbye!!" + name; //ローカル変数
+    //   return msg;
+    // }; //セミコロン大事！！！！
+    // goodbye("Kate");
+    //
+    // function hello2(name){
+    //   return "Hello!!" + name;
+    // }
+    // var nameHello = hello2("Bob");
+    // console.log(nameHello);
+    // console.log(msg);
+
+//タイマー処理
+//setInterval...秒ごとに実行
+//setTimeout...秒後に1度だけ実行
+
+    // var j =0;
+    // function showJ(){
+    //   console.log(j++);
+    //     var tmout = setTimeout(function(){
+    //       showJ();
+    //       console.log("YES");
+    //     },1000);
+    //
+    //     if (j>3) {
+    //       clearTimeout(tmout);
+    //     }
+    // }
+    // showJ(); //最初の1度だけ呼び出す必要あり
+
+    // setTimeout(function(){
+    //   showJ();
+    // },1000);
+
+    //array
+    // var score = [100,200,500,"inaba"];
+    // console.log(score[0]);
+    // score[2] =400;
+    // console.log(score);
+    //
+    // var m = [
+    //   [1,2,3],
+    //   [4,5,6]
+    // ];
+    // console.log(m[1][1]);
+
+    //オブジェクト
+    var user={
+      email: "178@gmail.com", //要素...プロパティ
+      score: 178,
+      greet: function(name){ //プロパティに関数がくる＝メソッド
+        console.log("hello," + name + " from " + this.email);
+      }
+    };
+    // console.log(user["email"]);
+    // console.log(user.email);
+    // user.score =100;
+    // console.log(user);
+    user.greet("Sena");
+
+    // var s = new String("funa");
+    var s = "funa"; // 文字列リテラルを使うと文字列オブジェクトに変換
+    console.log(s.length);//4
+    console.log(s.replace("f","F"));//funa
+    console.log(s.substr(0,2));//fu 0から2文字
+
+    var array = new Array(100,300,200);
+    //var a = [100,300,200];
+    console.log(array.length);//3
+    //unshift -> array <- push
+    //shift <- array -> pop
+    console.log(array.length);
+    array.push(500);
+    console.log(array);
+    array.splice(1,2,800,1000); //1から2文字消去してその位置に後のを置く
+    console.log(array);
+
+　　//文字の反転　
+    var ina = "inabacker";
+    console.log(ina);
+    var a = ina.split("");
+    console.log(a);
+    var re = a.reverse().join("");
+    console.log(re);
+
+    //Math
+    console.log(Math.PI);
+    console.log(Math.ceil(5.3)); //切り上げ
+    console.log(Math.floor(5.3));//切り捨て
+    console.log(Math.round(5.3));//四捨五入
+    console.log(Math.random());//0-1をランダムで
+
+    var d = new Date();
+    var d = new Date(2014,2,11,10,20,30);
+    console.log(d.getFullYear());
+    console.log(d.getMonth());
+    console.log(d.getTime());// 1970/1/1からの経過ミリ秒
+
+    //console.log(window);
+    console.log(window.outerHeight);
+    // window.location.href = 'https://senafunakubo.github.io';
+    //window.documentまたはdocument - 今開いているページ
+    //document object model (DOM)
+
+    var e = document.getElementById('msg');
+    e.textContent = "HELLO!";
+    e.style.color = "red";
+    e.className = "myStyle";
+
+    // var greetTest = document.createElement('p'),
+    //     text = document.createTextNode('Hello world');
+    // document.body.appendChild(greetTest).appendChild(text);
+
+    document.getElementById('add').addEventListener('click',function(){
+      var greetTest = document.createElement('p'),
+          text = document.createTextNode('Hello world');
+      document.body.appendChild(greetTest).appendChild(text);
+    })
+    </script>
+  </body>
+</html>

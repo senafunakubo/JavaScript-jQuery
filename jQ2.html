@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+ <html lang="en">
+   <head>
+     <meta charset="utf-8">
+     <title>jQuery2</title>
+   </head>
+
+   <body>
+     <p>JQ!!</p>
+     <button>Add!</button>
+     <div id="result"></div>
+     <div id="box" style="width:100px;height:100px;background:red;"></div>
+     <input type="text" name="name" id="name">
+     <input type="button" value="Greet!" id="greet">
+
+     <select id="members" name="members">
+       <option>inabacker</option>
+       <option>mono</option>
+       <option>2017</option>
+     </select>
+
+     <ul>
+       <li>0</li>
+       <li>1</li>
+       <li>2</li>
+     </ul>
+
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     <script>
+       $(function(){
+         //before,after -> insertBefore, insertAfter
+         //prepend,append 子要素の先頭または末尾に追加 -> prependTo, appendTo
+
+         var listAdd = $('<li>').text('just added');
+        //  $('ul > li:eq(1)').before(listAdd);
+         listAdd.insertBefore($('ul > li:eq(1)'));
+        //  $('ul').prepend(listAdd);
+         listAdd.prependTo($('ul'));
+        //  $('ul').append(listAdd);
+
+
+        //Effect
+        // hide, show
+        // fadeOut,fadeIn
+        // toggle 消えてたら出る、出てたら消える
+        // $('#box').hide('slow');
+        // $('#box').hide(800);
+        // $('#box').fadeOut(800);
+        // $('#box').toggle(800);
+        // $('#box').toggle(800);
+        // $('#box').fadeOut(800,function(){
+        //   alert("gone!");
+        // });
+
+
+        //Event
+        //click, mouseover, mouseout, mousemove
+        // $('#box').click(function(){
+        //   alert("Hi!");
+        // });
+
+　　　　　//.で繋げる
+        // $('#box')
+        //     .mouseover(function(){
+        //       $(this).css('background','blue');
+        //     })
+        //     .mouseout(function(){
+        //       $(this).css('background','red');
+        //     })
+        //     .mouseover(function(e){
+        //       $(this).text(e.pageX);
+        //     });
+
+        //focus, blur
+        //change
+        // $('#name')
+        //     .focus(function(){
+        //       $(this).css('background','yellow')
+        //     })
+        //     .blur(function(){
+        //       $(this).css('background','white')
+        //     });
+        //
+        // $('#members').change(function(){
+        //     alert('changed!');
+        // });
+
+        $('button').click(function(){
+            var p = $('<p>').text('vanish').addClass('vanish');
+            $(this).before(p);
+        });
+
+       //functionが読み込まれた当初にないイベントはこの方法では実行できない
+        // $('.vanish').click(function(){
+        //     $(this).remove();
+        // });
+
+       //これだとOK
+        $('body').on('click','.vanish',function(){
+          $(this).remove();
+        });
+
+
+        //Ajax
+        //Asynchronus JavaScript + XML
+        //サーバーと通信 + ページの書き換え
+        //ページ内通信でページの一部を変更(完了ボタンのような)
+        //非同期: 処理が終わる前に次の処理に移る
+        //$.post データ更新も
+        //$.get　データ取得
+
+        // $('button').click(function(){
+        //  $('#result').load('more.html');
+        //  $('#message').css('color','red'); 非同期のせいでうまくいかん
+          // $('#result').load('more.html',function(){
+          //    $('#message').css('color','red');
+          // });
+
+        // });
+
+        $('#greet').click(function(){
+           $.get('greet.php',{
+               name: $('#name').val()
+           },function(data){ //dataはphpから返ってきた値
+               $('#result').html(data.message + '(' + data.length + ')');
+           });
+        });
+
+       });
+     </script>
+   </body>
+ </html>
