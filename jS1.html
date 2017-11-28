@@ -216,6 +216,29 @@
           text = document.createTextNode('Hello world');
       document.body.appendChild(greetTest).appendChild(text);
     })
+
+    // var is a fuction scope
+    // let is a new stuff and block scope
+
+    //== と === are comparison operators
+    //== compares value only
+    //=== compares value and type
+
+    //function declaration
+    function funcD(){
+      console.log("function declaration");
+    }
+    //function expression
+    //saved into variable
+    //after writing this, you have to call
+    //before that, you can get an error
+    let funcE = function(){
+      console.log("function expression");
+    }
+
+    setTimeout(function(){
+      console.log("0");
+    },1000);
     </script>
   </body>
 </html>

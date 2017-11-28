@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <script>
+    //normal function
+      function hello(){
+        var time = 10;
+        time--;
+        console.log(time);
+      }
+      hello();
+      hello();
+
+    //closure
+      var helloTime = function(){
+        var times= 10;
+        return function timeDown(){
+          times--;
+          console.log(times);
+        }
+      }
+
+      var timer = helloTime();
+      timer();
+      timer();
+
+      var inaba = "inabacker";
+      var split = inaba.split("");
+      var reverseFix = split.reverse().join("");
+      console.log(reverseFix);
+
+      function test(){
+        let a = 1;
+        console.log(a);
+        {
+          let a = 2;
+          console.log(a);
+        }
+        console.log(a);
+      }
+      test();
+
+      function test2(){
+        var b = 1;
+        console.log(b);
+        {
+          var b = 2;
+          console.log(b);
+        }
+        console.log(b);
+      }
+      test2();
+
+    </script>
+  <body>
+</html>
